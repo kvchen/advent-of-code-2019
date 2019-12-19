@@ -68,14 +68,14 @@ impl Computer {
     }
 
     pub fn run(&mut self, input: Vec<i64>) -> Result<Vec<i64>> {
-        let (result, output) = self.run_until_blocked(input)?;
+        let (result, output) = self.run_until_stopped(input)?;
         match result {
             StoppedResult::Blocked => Err(anyhow!("Blocked on input")),
             StoppedResult::Halted => Ok(output),
         }
     }
 
-    pub fn run_until_blocked(&mut self, input: Vec<i64>) -> Result<(StoppedResult, Vec<i64>)> {
+    pub fn run_until_stopped(&mut self, input: Vec<i64>) -> Result<(StoppedResult, Vec<i64>)> {
         let mut input_stream = input.into_iter();
         let mut output = vec![];
 

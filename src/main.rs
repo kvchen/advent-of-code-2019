@@ -31,6 +31,7 @@ fn main() -> Result<()> {
         2 => Ok(Parts(days::day02::part1, days::day02::part2)),
         5 => Ok(Parts(days::day05::part1, days::day05::part2)),
         9 => Ok(Parts(days::day09::part1, days::day09::part2)),
+        11 => Ok(Parts(days::day11::part1, days::day11::part2)),
         15 => Ok(Parts(days::day15::part1, days::day15::part2)),
         _ => Err(anyhow!("Question {} not implemented", question)),
     }?;

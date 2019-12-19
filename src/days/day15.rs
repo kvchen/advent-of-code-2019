@@ -72,7 +72,7 @@ impl Iterator for Maze {
             }
 
             let mut next_computer = current_computer.clone();
-            let (_, output) = next_computer.run_until_blocked(direction_input).unwrap();
+            let (_, output) = next_computer.run_until_stopped(direction_input).unwrap();
 
             let location = match output[0] {
                 0 => Location::Wall,

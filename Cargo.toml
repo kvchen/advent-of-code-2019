@@ -1,0 +1,12 @@
+[package]
+name = "aoc2019"
+version = "0.1.0"
+authors = ["Kevin Chen <kvchen@fb.com>"]
+edition = "2018"
+
+[dependencies]
+structopt = { version = "0.3" }
+anyhow = { version = "1.0" }
+regex = { version = "1.0" }
+petgraph = { version = "0.4" }
+itertools = { version = "0.8" }

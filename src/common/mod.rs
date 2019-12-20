@@ -1,5 +1,7 @@
 use std::ops::{Add, Sub};
 
+pub mod care_package;
+
 #[derive(Hash, Eq, PartialEq, Debug, Copy, Clone)]
 pub struct Point {
     pub x: i64,

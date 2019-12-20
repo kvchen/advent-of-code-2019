@@ -48,7 +48,7 @@ pub enum StoppedResult {
 impl Computer {
     pub fn new(initial_memory: &Vec<i64>) -> Computer {
         let mut internal_memory = initial_memory.clone();
-        internal_memory.resize(2048, 0);
+        internal_memory.resize(4096, 0);
 
         Computer {
             memory: internal_memory,

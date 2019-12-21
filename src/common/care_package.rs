@@ -72,32 +72,26 @@ impl Screen {
             };
 
             let current_tile = self.data[point.y as usize][point.x as usize];
-            let tile = match chunk[2] {
-                0 => {
-                    if current_tile == Tile::Block {
-                        self.remaining_blocks -= 1;
-                    }
-                    Tile::Empty
-                }
+            let next_tile = match chunk[2] {
+                0 => Tile::Empty,
                 1 => Tile::Wall,
-                2 => {
-                    if current_tile != Tile::Block {
-                        self.remaining_blocks += 1;
-                    }
-                    Tile::Block
-                }
-                3 => {
-                    self.paddle = point;
-                    Tile::Paddle
-                }
-                4 => {
-                    self.ball = point;
-                    Tile::Ball
-                }
+                2 => Tile::Block,
+                3 => Tile::Paddle,
+                4 => Tile::Ball,
                 _ => unreachable!(),
             };
 
-            self.data[point.y as usize][point.x as usize] = tile;
+            if current_tile == Tile::Block && next_tile == Tile::Empty {
+                self.remaining_blocks -= 1;
+            } else if current_tile != Tile::Block && next_tile == Tile::Block {
+                self.remaining_blocks += 1;
+            } else if next_tile == Tile::Paddle {
+                self.paddle = point;
+            } else if next_tile == Tile::Ball {
+                self.ball = point;
+            }
+
+            self.data[point.y as usize][point.x as usize] = next_tile;
         }
     }
 }
